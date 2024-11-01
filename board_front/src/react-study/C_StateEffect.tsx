@@ -52,7 +52,7 @@ export default function C_StateEffect() {
           { params: { category }}
         );
 
-        const data = response.data.data;
+        const data = response.data.data; 
 
         setResults(data);
 

@@ -5,12 +5,13 @@ import { Route, Routes } from 'react-router-dom';
 
 import UseState from './react-study/A_useState';
 import Container from './layouts/Container';
-import { AUTH_PATH, BOARD_DETAIL_PATH, BOARD_UPDATE_PATH, BOARD_WRITE_PATH, MAIN_PATH, REACT_STUDY_PATH, USER_PATH } from './constants';
+import { AUTH_PATH, BOARD_DETAIL_PATH, BOARD_UPDATE_PATH, BOARD_WRITE_PATH, MAIN_PATH, REACT_STUDY_PATH, TODO_PATH, USER_PATH } from './constants';
 import Main from './views/Main';
 import Authentication from './views/Authentication';
 import Board from './views/board';
 import User from './views/User';
 import ReactStudy from './views/ReactStudy';
+import Todo from './views/Todo';
 
 function App() {
   return (
@@ -41,6 +42,10 @@ function App() {
 
           {/* 리액트 학습 */}
           <Route path={REACT_STUDY_PATH} element={<ReactStudy />} />
+
+          {/* todos 연결 */}
+          <Route path={TODO_PATH} element={<Todo />} />
+
         </Route>
       </Routes>
     </>
