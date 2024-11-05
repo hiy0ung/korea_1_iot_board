@@ -66,7 +66,7 @@ export default function SignIn() {
         id: user.id,
         name: user.email
       })
-      navigate('/');
+      navigate('/board');
     } else {
       setError('로그인 실패: 인증 정보를 확인해주세요.');
     }
