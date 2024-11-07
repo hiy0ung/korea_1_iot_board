@@ -78,7 +78,7 @@ public class WebSecurityConfig {
 
         return new ProviderManager(List.of(authProvider));
     }
-    
+
     @Bean
     public BCryptPasswordEncoder bCryptpasswordEncoder() {
         return new BCryptPasswordEncoder();
