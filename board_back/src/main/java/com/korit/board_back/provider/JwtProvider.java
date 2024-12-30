@@ -21,8 +21,15 @@ public class JwtProvider {
     @Value("${jwt.expiration}")
     private int jwtExpirationMs;
 
+    @Value("${mail.auth-code-expiration-millis}")
+    private int jwtEmailExpirationMs;
+
     public int getExpiration() {
         return jwtExpirationMs;
+    }
+
+    public int getEmailExpirationMs() {
+        return jwtEmailExpirationMs;
     }
 
     public JwtProvider(@Value("${jwt.secret}") String secret, @Value("${jwt.expiration}") int jwtExpirationMs) {
@@ -45,7 +52,7 @@ public class JwtProvider {
         return Jwts.builder()
                 .claim("username", username)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + (1000L * 6 * 5)))
+                .setExpiration(new Date(System.currentTimeMillis() + jwtEmailExpirationMs))
                 .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
     }
@@ -61,6 +68,12 @@ public class JwtProvider {
         Claims claims = getClaims(token);
 
         return claims.get("userId", String.class);
+    }
+
+    public String getUsernameFromEmailJwt(String token) {
+        Claims claims = getClaims(token);
+
+        return claims.get("username", String.class);
     }
 
     public boolean isValidToken(String token) {
