@@ -28,6 +28,7 @@ public class JwtProvider {
         return jwtExpirationMs;
     }
 
+    // 지금안씀...........
     public int getEmailExpirationMs() {
         return jwtEmailExpirationMs;
     }
